@@ -10,5 +10,5 @@ docker run -d --name mesos -e MESOS_VERSION=false --net=host ebirukov/mesos:1.0.
 
 docker run -d --name mesos-slave --privileged --net=host -ti -e MESOS_VERSION=false ebirukov/mesos:1.0.0 /mesos-1.0.0/build/bin/mesos-slave.sh --work_dir=/tmp --master=zk://ec2-54-197-120-225.compute-1.amazonaws.com:2181/mesos
 
-docker run -d --net=host -ti -e MESOS_VERSION=false -e "MESOS_CONTAINERIZERS=docker,mesos" -v /var/run/docker.sock:/var/run/docker.sock ebirukov/mesos:1.0.0 /mesos-1.0.0/build/bin/mesos-slave.sh --work_dir=/tmp --master=zk://ec2-54-197-120-225.compute-1.amazonaws.com:2181/mesos
+docker run -d --net=host -ti -e DOCKER_API_VERSION=1.23 -e MESOS_VERSION=false -e "MESOS_CONTAINERIZERS=docker,mesos" -v /var/run/docker.sock:/var/run/docker.sock ebirukov/mesos:1.0.0 /mesos-1.0.0/build/bin/mesos-slave.sh --work_dir=/tmp --master=zk://ec2-54-197-120-225.compute-1.amazonaws.com:2181/mesos
 
