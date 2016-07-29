@@ -8,9 +8,7 @@ RUN wget http://www.apache.org/dist/mesos/${VER}/mesos-${VER}.tar.gz
 RUN tar -zxf mesos-*.tar.gz
 RUN cd mesos-* && mkdir build && cd build && ../configure && make -j4 && make install
 WORKDIR mesos-${VER}
-RUN cd 3rdparty
-RUN tar –xzf zookeeper-*.tar.gz
-RUN cd zookeeper-* && cp conf/zoo_sample.cfg conf/zoo.cfg
+RUN cd 3rdparty && tar -xzf zookeeper-*.tar.gz && cd zookeeper-* && cp conf/zoo_sample.cfg conf/zoo.cfg
 #RUN echo "server.1=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`:2888:3888" >> conf/zoo.cfg
 RUN curl -fsSL https://get.docker.com/ | sh
 ENV MESOS_NATIVE_JAVA_LIBRARY=/usr/local/lib/libmesos.so
