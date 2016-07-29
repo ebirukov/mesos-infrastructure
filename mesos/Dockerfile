@@ -11,6 +11,6 @@ WORKDIR mesos-${VER}
 RUN cd 3rdparty
 RUN tar –xzf zookeeper-*.tar.gz
 RUN cd zookeeper-* && cp conf/zoo_sample.cfg conf/zoo.cfg
-RUN echo "server.1=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`:2888:3888" >> conf/zoo.cfg
+#RUN echo "server.1=`curl -s http://169.254.169.254/latest/meta-data/public-hostname`:2888:3888" >> conf/zoo.cfg
 RUN curl -fsSL https://get.docker.com/ | sh
 ENV MESOS_NATIVE_JAVA_LIBRARY=/usr/local/lib/libmesos.so
